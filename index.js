@@ -8,7 +8,9 @@ const getCardsArrayExpDate = (json, date) => {
   const normalizeDate = (rawDate) =>
     new Date(rawDate.split('-').reverse().join('-'));
 
-  const cards = json.CardInfo;
+  const clientInfo = JSON.parse(json);
+  const cards = clientInfo.CardInfo;
+
   const filteredCards = cards.filter(
     (card) => normalizeDate(card.ExpDate) > normalizeDate(date),
   );
